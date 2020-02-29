@@ -76,7 +76,7 @@ function check_finish(accesskey, projectid, ts_id) {
         resolve(jsonbody);
       } else {
         if (error) 
-          reject(new Error("test execution failed."));
+          reject(new Error("test execution failed."+String(body) + String(error)));
         else {
           reject(new Error("HTTP status code : " + String(response.statusCode)));
         }
@@ -197,7 +197,7 @@ async function run() {
       let ret = await http_promise_execute;
 
       if (!('tsid' in ret))
-        throw Error("Test initialize: " + ret + "failed.:" + testsetname + ":" + ret);
+        throw Error("Test initialize: " + String(ret) + "failed.:" + testsetname );
       
       ts_id = ret['data']['tsid'];
       core.info((new Date()).toTimeString() + " Test initated.");
