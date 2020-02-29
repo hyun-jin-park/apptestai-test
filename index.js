@@ -197,7 +197,7 @@ async function run() {
       let ret = await http_promise_execute;
 
       if (!('tsid' in ret))
-        throw Error("Test initialize failed.:" + testsetname + ":" + ret);
+        throw Error("Test initialize: " + ret + "failed.:" + testsetname + ":" + ret);
       
       ts_id = ret['data']['tsid'];
       core.info((new Date()).toTimeString() + " Test initated.");
